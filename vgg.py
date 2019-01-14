@@ -9,15 +9,15 @@ class VGG(object):
 
     def __init__(self, content_path=config.CONTENT_PATH, style_path=config.STYLE_PATH):
 
-        self.content = self.load(content_path)
+        self.content = self.load_image(content_path)
 
-        self.style = self.load(style_path)
+        self.style = self.load_image(style_path)
 
-        self.noise_image = self.gen_noise()
+        self.noise_image = self.gen_noise_image()
 
-        self.model = self.vgg_model()
+        self.model = self.net()
 
-    def vgg_model(self):
+    def net(self):
 
         vgg = scipy.io.loadmat(config.VGG_PATH)
 
@@ -25,7 +25,7 @@ class VGG(object):
 
         model = dict()
 
-        model['input'] = tf.Variable(np.zeros([1, config.IMAGE_HEIGHT, config.IMAGE_WIDTHM, 3]), dtype=tf.float32)
+        model['input'] = tf.Variable(np.zeros([1, config.IMAGE_HEIGHT, config.IMAGE_WIDTH, 3]), dtype=tf.float32)
 
         model['conv1_1'] = self.forward(model['input'], self.get_wb(vgg_layers, 0))
         model['conv1_2'] = self.forward(model['conv1_1'], self.get_wb(vgg_layers, 2))
