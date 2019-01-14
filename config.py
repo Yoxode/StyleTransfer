@@ -1,6 +1,6 @@
 CONTENT_PATH = "contents/content1.jpg"
 STYLE_PATH = "styles/style1.jpg"
-OUTPUT_PATH = "outputs"
+OUTPUT_PATH = "outputs/"
 
 VGG_URL = "http://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat"
 VGG_PATH = "imagenet-vgg-verydeep-19.mat"
