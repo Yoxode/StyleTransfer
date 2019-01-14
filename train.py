@@ -14,7 +14,7 @@ def gram_matrix(f, n, m):
     :param m: number of channels
     :return: gram matrix of tensor f
     """
-    f = tf.reshape(f, (m, n))
+    f = tf.reshape(f, (n, m))
     return tf.matmul(tf.transpose(f), f)
 
 
@@ -67,7 +67,7 @@ def train():
         img += config.MEAN_PIXELS
         img = img[0]
         img = np.clip(img, 0, 255).astype(np.uint8)
-        scipy.misc.imsave('{}.jpg'.format(config.OUTPUT_PATH), img)
+        scipy.misc.imsave('{}output.jpg'.format(config.OUTPUT_PATH), img)
 
 
 def main():
